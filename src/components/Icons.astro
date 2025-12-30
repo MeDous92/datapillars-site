@@ -1,5 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Premium-minimal background + better defaults */
 :root {
   color-scheme: light;
 }
@@ -21,4 +24,9 @@ body {
 
 a {
   text-underline-offset: 3px;
+}
+
+.dp-glass {
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(10px);
 }

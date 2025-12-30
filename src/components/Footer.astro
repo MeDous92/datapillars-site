@@ -2,12 +2,23 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-zinc-200">
-  <div class="mx-auto max-w-6xl px-4 py-8 md:px-6">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <div class="text-sm text-zinc-600">© {year} DataPillars.</div>
-      <div class="flex gap-4 text-sm">
+<footer class="border-t border-zinc-200/70">
+  <div class="mx-auto max-w-6xl px-4 py-10 md:px-6">
+    <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div>
+        <div class="flex items-center gap-2 font-semibold">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-900 text-white">DP</span>
+          DataPillars
+        </div>
+        <p class="mt-2 text-sm text-zinc-600">
+          Reliable, automated reporting for growing companies.
+        </p>
+        <p class="mt-1 text-xs text-zinc-500">© {year} DataPillars.</p>
+      </div>
+
+      <div class="flex gap-6 text-sm">
         <a class="text-zinc-600 hover:text-zinc-900" href="/services">Services</a>
+        <a class="text-zinc-600 hover:text-zinc-900" href="/case-examples">Case Examples</a>
         <a class="text-zinc-600 hover:text-zinc-900" href="/contact">Contact</a>
       </div>
     </div>

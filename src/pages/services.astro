@@ -3,14 +3,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
 ---
 
-<BaseLayout title="Services — DataPillars" description="Services to build reliable, automated reporting for growing companies.">
+<BaseLayout title="Services — DataPillars" description="Services that make reporting reliable for growing companies.">
   <section class="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white/70 p-8 md:p-12">
-    <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl"></div>
+    <div class="absolute inset-0 dp-grid opacity-60"></div>
+    <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
     <div class="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl"></div>
 
     <div class="relative max-w-3xl">
-      <div class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-600">
-        <span class="h-2 w-2 rounded-full bg-zinc-900"></span>
+      <div class="dp-kicker">
+        <span class="dp-dot"></span>
         Clear offers • quick starting point
       </div>
 
@@ -18,34 +19,37 @@ import CTA from "../components/CTA.astro";
         Services that make reporting reliable — not fragile
       </h1>
 
-      <p class="mt-4 text-lg text-zinc-700">
+      <p class="mt-4 text-lg leading-relaxed text-zinc-700">
         Choose a clear starting point. Each service reduces manual effort, aligns KPIs, and keeps reporting stable as the business grows.
       </p>
 
       <div class="mt-6 flex flex-wrap gap-3">
-        <a href="/contact" class="rounded-xl bg-zinc-900 px-5 py-3 text-white shadow-sm hover:bg-zinc-800">
-          Book a Free 20-min Review
-        </a>
-        <a href="/case-examples" class="rounded-xl border border-zinc-300 bg-white px-5 py-3 hover:bg-zinc-50">
-          See Case Examples
-        </a>
+        <a href="/contact" class="dp-btn-primary">Book a Free 20-min Review</a>
+        <a href="/case-examples" class="dp-btn-secondary">See Case Examples</a>
       </div>
     </div>
   </section>
 
   <section class="mt-10 grid gap-6 md:grid-cols-3">
-    <div class="rounded-3xl border border-zinc-200 bg-white/70 p-6">
+    <div class="dp-card">
       <div class="text-xs font-semibold uppercase tracking-wide text-zinc-500">Core offer</div>
-      <h2 class="mt-2 text-xl font-semibold">Reporting Foundation</h2>
-      <p class="mt-2 text-zinc-700">
+      <h2 class="mt-2 text-lg font-semibold tracking-tight">Reporting Foundation</h2>
+      <p class="dp-card-body">
         Build a reliable, automated reporting setup that stays stable as the business grows.
       </p>
 
-      <ul class="mt-4 space-y-2 text-sm text-zinc-700">
-        <li>• A single, consistent KPI definition set</li>
-        <li>• Automated refresh (less manual reporting work)</li>
-        <li>• Reporting-ready data layer + documentation</li>
-        <li>• Power BI dashboards for leadership decisions</li>
+      <ul class="dp-list">
+        {[
+          "A single, consistent KPI definition set",
+          "Automated refresh (less manual reporting work)",
+          "Reporting-ready data layer + documentation",
+          "Dashboards designed for leadership decisions",
+        ].map((t) => (
+          <li>
+            <span class="dp-bullet"></span>
+            <span>{t}</span>
+          </li>
+        ))}
       </ul>
 
       <div class="mt-5 rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-700">
@@ -57,54 +61,68 @@ import CTA from "../components/CTA.astro";
       </a>
     </div>
 
-    <div class="rounded-3xl border border-zinc-200 bg-white/70 p-6">
+    <div class="dp-card">
       <div class="text-xs font-semibold uppercase tracking-wide text-zinc-500">Entry offer</div>
-      <h2 class="mt-2 text-xl font-semibold">Reporting Audit & Fix</h2>
-      <p class="mt-2 text-zinc-700">
+      <h2 class="mt-2 text-lg font-semibold tracking-tight">Reporting Audit & Fix</h2>
+      <p class="dp-card-body">
         Find out why numbers don’t match and fix the root cause — not just visuals.
       </p>
 
-      <ul class="mt-4 space-y-2 text-sm text-zinc-700">
-        <li>• Review your current reports & KPI logic</li>
-        <li>• Identify mismatches (Finance vs Ops vs HR)</li>
-        <li>• Spot manual steps & refresh risks</li>
-        <li>• Quick wins + a clear improvement plan</li>
+      <ul class="dp-list">
+        {[
+          "Review your current reports & KPI logic",
+          "Identify mismatches (Finance vs Ops vs HR)",
+          "Spot manual steps & refresh risks",
+          "Quick wins + a clear improvement plan",
+        ].map((t) => (
+          <li>
+            <span class="dp-bullet"></span>
+            <span>{t}</span>
+          </li>
+        ))}
       </ul>
 
       <div class="mt-5 rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-700">
         <strong>Best for:</strong> when leadership doesn’t fully trust reporting.
       </div>
 
-      <a href="/contact" class="mt-6 inline-block rounded-xl border border-zinc-300 bg-white px-4 py-2 hover:bg-zinc-50">
+      <a href="/contact" class="mt-6 inline-block dp-btn-secondary px-4 py-2">
         Ask for an Audit
       </a>
     </div>
 
-    <div class="rounded-3xl border border-zinc-200 bg-white/70 p-6">
+    <div class="dp-card">
       <div class="text-xs font-semibold uppercase tracking-wide text-zinc-500">Retainer</div>
-      <h2 class="mt-2 text-xl font-semibold">Ongoing Reporting Support</h2>
-      <p class="mt-2 text-zinc-700">
+      <h2 class="mt-2 text-lg font-semibold tracking-tight">Ongoing Reporting Support</h2>
+      <p class="dp-card-body">
         Ongoing support for new KPIs, reporting changes, and new data sources — without hiring full-time.
       </p>
 
-      <ul class="mt-4 space-y-2 text-sm text-zinc-700">
-        <li>• Add KPIs & extend reporting areas</li>
-        <li>• Reduce “urgent reporting fires”</li>
-        <li>• Monthly planning + delivery cadence</li>
-        <li>• Documentation and handover discipline</li>
+      <ul class="dp-list">
+        {[
+          "Add KPIs & extend reporting areas",
+          "Reduce “urgent reporting fires”",
+          "Monthly planning + delivery cadence",
+          "Documentation and handover discipline",
+        ].map((t) => (
+          <li>
+            <span class="dp-bullet"></span>
+            <span>{t}</span>
+          </li>
+        ))}
       </ul>
 
       <div class="mt-5 rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-700">
         <strong>Best for:</strong> teams scaling reporting fast.
       </div>
 
-      <a href="/contact" class="mt-6 inline-block rounded-xl border border-zinc-300 bg-white px-4 py-2 hover:bg-zinc-50">
+      <a href="/contact" class="mt-6 inline-block dp-btn-secondary px-4 py-2">
         Discuss a Retainer
       </a>
     </div>
   </section>
 
-  <section class="mt-14 rounded-3xl border border-zinc-200 bg-white/70 p-7 md:p-10">
+  <section class="mt-14 dp-card">
     <h2 class="text-2xl font-semibold tracking-tight">What projects are a great fit?</h2>
 
     <div class="mt-5 grid gap-4 md:grid-cols-2">

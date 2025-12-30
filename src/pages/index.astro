@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
+import FeatureCard from "../components/FeatureCard.astro";
 
 const title = "DataPillars — Reliable, automated reporting";
 const description =
@@ -8,14 +9,16 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
+  <!-- HERO -->
   <section class="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white/70 p-8 md:p-12">
-    <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl"></div>
+    <div class="absolute inset-0 dp-grid opacity-60"></div>
+    <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
     <div class="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl"></div>
 
     <div class="relative grid items-center gap-10 md:grid-cols-2">
       <div>
-        <div class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-600">
-          <span class="h-2 w-2 rounded-full bg-zinc-900"></span>
+        <div class="dp-kicker">
+          <span class="dp-dot"></span>
           Built for SMB Finance • Ops • HR
         </div>
 
@@ -23,18 +26,14 @@ const description =
           Reliable, automated reporting for growing companies
         </h1>
 
-        <p class="mt-4 text-lg text-zinc-700">
+        <p class="mt-4 text-lg leading-relaxed text-zinc-700">
           DataPillars helps small and mid-sized businesses make reporting consistent —
           so leaders stop debating numbers and start making decisions.
         </p>
 
         <div class="mt-7 flex flex-wrap gap-3">
-          <a href="/contact" class="rounded-xl bg-zinc-900 px-5 py-3 text-white shadow-sm hover:bg-zinc-800">
-            Book a Free 20-min Review
-          </a>
-          <a href="/services" class="rounded-xl border border-zinc-300 bg-white px-5 py-3 hover:bg-zinc-50">
-            See Services
-          </a>
+          <a href="/contact" class="dp-btn-primary">Book a Free 20-min Review</a>
+          <a href="/services" class="dp-btn-secondary">See Services</a>
         </div>
 
         <div class="mt-6 text-sm text-zinc-600">
@@ -42,56 +41,107 @@ const description =
         </div>
       </div>
 
-      <div class="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-        <h2 class="text-base font-semibold">This is for you if…</h2>
-        <ul class="mt-4 space-y-2 text-sm text-zinc-700">
-          <li>• Finance and Operations don’t match on key numbers</li>
-          <li>• Reporting depends on Excel exports and manual steps</li>
-          <li>• Dashboards exist, but leadership doesn’t fully trust them</li>
-          <li>• New KPIs take too long to implement</li>
+      <div class="dp-card">
+        <h2 class="dp-card-title">This is for you if…</h2>
+
+        <ul class="dp-list">
+          {[
+            "Finance and Operations don’t match on key numbers",
+            "Reporting depends on Excel exports and manual steps",
+            "Dashboards exist, but leadership doesn’t fully trust them",
+            "New KPIs take too long to implement",
+          ].map((t) => (
+            <li>
+              <span class="dp-bullet"></span>
+              <span>{t}</span>
+            </li>
+          ))}
         </ul>
 
-        <div class="mt-6 rounded-xl bg-zinc-50 p-4 text-sm text-zinc-700">
+        <div class="mt-6 rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-700">
           <strong>What we fix first:</strong> definitions, structure, and automation — so reporting becomes stable.
         </div>
       </div>
     </div>
   </section>
 
+  <!-- WHAT YOU GET -->
   <section class="mt-12">
-    <h2 class="text-2xl font-semibold tracking-tight">What you get</h2>
+  <h2 class="text-2xl font-semibold tracking-tight">What you get</h2>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-2">
+    <FeatureCard
+      variant="feature"
+      title="Automated reporting"
+      body="Reports refresh on schedule — fewer manual tasks, fewer errors."
+      icon="automation"
+      metricLabel="Outcome"
+      metric="Less manual work"
+    />
+    <FeatureCard
+      variant="feature"
+      title="Consistent numbers"
+      body="Shared KPI definitions so teams stop arguing over metrics."
+      icon="consistency"
+      metricLabel="Outcome"
+      metric="One KPI definition"
+    />
+    <FeatureCard
+      variant="feature"
+      title="Decision-ready dashboards"
+      body="Reporting designed around business questions."
+      icon="dashboard"
+      metricLabel="Outcome"
+      metric="Faster decisions"
+    />
+    <FeatureCard
+      variant="feature"
+      title="Less dependency on individuals"
+      body="Clear structure and documentation so knowledge isn’t locked in one person."
+      icon="handover"
+      metricLabel="Outcome"
+      metric="Easier handover"
+    />
+  </div>
+</section>
+
+
+  <!-- HOW IT WORKS -->
+  <section class="mt-12">
+    <h2 class="text-2xl font-semibold tracking-tight">How it works</h2>
 
     <div class="mt-6 grid gap-4 md:grid-cols-2">
-      {[
-        { t: "Automated reporting", d: "Reports refresh on schedule — fewer manual tasks, fewer errors." },
-        { t: "Consistent numbers", d: "Shared KPI definitions so teams stop arguing over metrics." },
-        { t: "Decision-ready dashboards", d: "Reporting designed around business questions." },
-        { t: "Less dependency on individuals", d: "Clear structure and documentation so knowledge isn’t locked in one person." },
-      ].map((x) => (
-        <div class="rounded-2xl border border-zinc-200 bg-white/70 p-6">
-          <div class="font-semibold">{x.t}</div>
-          <div class="mt-2 text-zinc-700">{x.d}</div>
-        </div>
-      ))}
+      <FeatureCard
+        variant="step"
+        step={1}
+        title="Align on decisions"
+        body="Clarify questions leaders need answered and define KPIs."
+        chart="none"
+      />
+      <FeatureCard
+        variant="step"
+        step={2}
+        title="Fix the foundation"
+        body="Organize data so the same logic produces the same number."
+        chart="none"
+      />
+      <FeatureCard
+        variant="step"
+        step={3}
+        title="Automate refresh"
+        body="Remove manual steps so reporting updates reliably."
+        chart="none"
+      />
+      <FeatureCard
+        variant="step"
+        step={4}
+        title="Deliver + handover"
+        body="Dashboards + documentation + a clear path to extend."
+        chart="none"
+      />
     </div>
   </section>
 
-  <section class="mt-12">
-    <h2 class="text-2xl font-semibold tracking-tight">How it works</h2>
-    <ol class="mt-6 grid gap-4 md:grid-cols-4">
-      {[
-        { t: "1) Align on decisions", d: "Clarify questions leaders need answered and define KPIs." },
-        { t: "2) Fix the foundation", d: "Organize data so the same logic produces the same number." },
-        { t: "3) Automate refresh", d: "Remove manual steps so reporting updates reliably." },
-        { t: "4) Deliver + handover", d: "Dashboards + documentation + a clear path to extend." },
-      ].map((x) => (
-        <li class="list-none rounded-2xl border border-zinc-200 bg-white/70 p-6">
-          <div class="font-semibold">{x.t}</div>
-          <div class="mt-2 text-zinc-700">{x.d}</div>
-        </li>
-      ))}
-    </ol>
-  </section>
-
+  <!-- CTA -->
   <CTA />
 </BaseLayout>

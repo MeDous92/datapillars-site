@@ -1,24 +1,70 @@
 @import "tailwindcss";
 
+/* Brand tokens */
 :root {
-  color-scheme: light;
+  --dp-accent: 37 99 235; /* blue */
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Base */
+html { scroll-behavior: smooth; }
 
 body {
   background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(99, 102, 241, 0.14), transparent 60%),
-    radial-gradient(900px 520px at 80% 0%, rgba(14, 165, 233, 0.12), transparent 55%),
+    radial-gradient(1200px 600px at 20% -10%, rgba(99, 102, 241, 0.12), transparent 60%),
+    radial-gradient(900px 520px at 80% 0%, rgba(14, 165, 233, 0.10), transparent 55%),
     linear-gradient(to bottom, rgba(250, 250, 250, 1), rgba(255, 255, 255, 1));
 }
 
-::selection {
-  background: rgba(99, 102, 241, 0.18);
+::selection { background: rgba(37, 99, 235, 0.18); }
+
+/* ---------- Design system helpers (consistent alignment) ---------- */
+.dp-kicker {
+  @apply inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-600;
 }
 
-a {
-  text-underline-offset: 3px;
+.dp-dot {
+  @apply h-2 w-2 rounded-full;
+  background: rgb(var(--dp-accent));
+}
+
+.dp-card {
+  @apply rounded-3xl border border-zinc-200 bg-white/70 p-6 shadow-sm;
+}
+
+.dp-card-title {
+  @apply text-base font-semibold tracking-tight;
+}
+
+.dp-card-body {
+  @apply mt-2 text-sm leading-relaxed text-zinc-700;
+}
+
+.dp-btn-primary {
+  @apply rounded-xl bg-zinc-900 px-5 py-3 text-white shadow-sm hover:bg-zinc-800;
+}
+
+.dp-btn-secondary {
+  @apply rounded-xl border border-zinc-300 bg-white px-5 py-3 hover:bg-zinc-50;
+}
+
+.dp-list {
+  @apply mt-4 space-y-2 text-sm text-zinc-700;
+}
+
+.dp-list li {
+  @apply flex gap-2;
+}
+
+.dp-bullet {
+  @apply mt-2 h-1.5 w-1.5 flex-none rounded-full;
+  background: rgba(var(--dp-accent), 0.95);
+}
+
+/* Subtle “data grid” motif */
+.dp-grid {
+  background-image:
+    linear-gradient(to right, rgba(24, 24, 27, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 24, 27, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(60% 60% at 50% 40%, black 30%, transparent 70%);
 }

@@ -1,0 +1,105 @@
+---
+const {
+  title,
+  body,
+  icon = "automation",     // automation | consistency | dashboard | handover
+  variant = "feature",     // feature | step
+  step = 1,                // used when variant="step"
+  metric = "",             // e.g. "↓ 80% manual work"
+  metricLabel = "",        // e.g. "Outcome"
+} = Astro.props;
+
+const iconWrap =
+  "flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-700";
+const svgCommon = "h-7 w-7";
+---
+
+<div class="group rounded-3xl border border-zinc-200 bg-white/80 p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+  <div class="flex items-start gap-5">
+    <!-- Left visual -->
+    <div class="shrink-0">
+      {variant === "feature" && (
+        <div class={iconWrap}>
+          {icon === "automation" && (
+            <svg class={svgCommon} viewBox="0 0 24 24" fill="none">
+              <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.8" />
+              <path
+                d="M4 12h3M17 12h3M12 4v3M12 17v3"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          )}
+
+          {icon === "consistency" && (
+            <svg class={svgCommon} viewBox="0 0 24 24" fill="none">
+              <path
+                d="M7 12l3 3 7-7"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 22a10 10 0 1 0-10-10"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          )}
+
+          {icon === "dashboard" && (
+            <svg class={svgCommon} viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="1.8" />
+              <path
+                d="M7 15V9M12 15V7M17 15v-5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          )}
+
+          {icon === "handover" && (
+            <svg class={svgCommon} viewBox="0 0 24 24" fill="none">
+              <path d="M7 7h10v14H7V7Z" stroke="currentColor" stroke-width="1.8" />
+              <path
+                d="M9 11h6M9 15h6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path d="M9 3h6v4H9V3Z" stroke="currentColor" stroke-width="1.8" />
+            </svg>
+          )}
+        </div>
+      )}
+
+      {variant === "step" && (
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-900 text-white shadow-sm">
+          <span class="text-lg font-semibold">{step}</span>
+        </div>
+      )}
+    </div>
+
+    <!-- Content -->
+    <div class="min-w-0 flex-1">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="text-lg font-semibold tracking-tight">{title}</div>
+
+        {metric && (
+          <div class="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-700">
+            {metricLabel && <span class="font-semibold text-zinc-900">{metricLabel}: </span>}
+            <span class="text-zinc-700">{metric}</span>
+          </div>
+        )}
+      </div>
+
+      <p class="mt-2 text-sm leading-relaxed text-zinc-700">{body}</p>
+
+      <div class="mt-4 h-[2px] w-14 rounded-full bg-blue-500/30 transition group-hover:w-20"></div>
+    </div>
+  </div>
+</div>

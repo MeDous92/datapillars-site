@@ -1,33 +1,66 @@
 ---
+import { LINKS } from "../lib/links";
+
 const nav = [
   { label: "Services", href: "/services" },
   { label: "Case Examples", href: "/case-examples" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+
+const whatsappPrefill = "Hi DataPillars, I’m interested in reliable reporting and automation. Can we talk?";
+const whatsappLink = `${LINKS.whatsappBase}?text=${encodeURIComponent(whatsappPrefill)}`;
 ---
 
-<header class="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/70 backdrop-blur">
+<header class="border-b border-zinc-200 bg-white/80 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
     <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
-      <span class="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-zinc-900 text-white shadow-sm">
-        DP
-        <span class="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full bg-blue-500 ring-2 ring-white"></span>
-      </span>
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 text-white">DP</span>
       <span>DataPillars</span>
     </a>
 
-    <nav class="hidden items-center gap-7 md:flex">
+    <nav class="hidden items-center gap-6 md:flex">
       {nav.map((item) => (
         <a class="text-sm text-zinc-700 hover:text-zinc-900" href={item.href}>{item.label}</a>
       ))}
-      <a href="/contact" class="rounded-xl bg-zinc-900 px-4 py-2 text-sm text-white shadow-sm hover:bg-zinc-800">
+
+      <a
+        href={LINKS.calendly}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
+      >
         Book a Call
+      </a>
+
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-50"
+      >
+        WhatsApp
       </a>
     </nav>
 
-    <a href="/contact" class="md:hidden rounded-xl bg-zinc-900 px-4 py-2 text-sm text-white shadow-sm hover:bg-zinc-800">
-      Contact
-    </a>
+    <!-- Mobile -->
+    <div class="flex items-center gap-2 md:hidden">
+      <a
+        href={LINKS.calendly}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg bg-zinc-900 px-3 py-2 text-sm text-white hover:bg-zinc-800"
+      >
+        Book
+      </a>
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 hover:bg-zinc-50"
+      >
+        WA
+      </a>
+    </div>
   </div>
 </header>

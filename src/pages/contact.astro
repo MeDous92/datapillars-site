@@ -1,51 +1,174 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { LINKS } from "../lib/links";
 ---
 
-<BaseLayout title="Contact — DataPillars" description="Book a call or send a message.">
-  <section class="max-w-3xl">
+<BaseLayout title="Contact — DataPillars" description="Reach out via WhatsApp or book a call.">
+  <section class="mx-auto max-w-3xl">
     <h1 class="text-3xl font-semibold tracking-tight md:text-4xl">Contact</h1>
     <p class="mt-3 text-zinc-700">
-      Book a free 20-minute review or send a message. I’ll reply within 1–2 business days.
+      Fastest: WhatsApp. If you prefer, you can also book a 30-minute meeting slot.
     </p>
-  </section>
 
-  <div class="mt-10 grid gap-6 md:grid-cols-2">
-    <div class="rounded-3xl border border-zinc-200 bg-white/70 p-6">
-      <h2 class="text-xl font-semibold">Book a call</h2>
-      <p class="mt-2 text-zinc-700">
-        Add your Calendly link when ready.
-      </p>
-
+    <div class="mt-6 flex flex-wrap gap-3">
       <a
-        class="mt-4 inline-block rounded-xl bg-zinc-900 px-4 py-2 text-white shadow-sm hover:bg-zinc-800"
-        href="https://calendly.com/YOUR-LINK"
+        href={LINKS.calendly}
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
+        class="dp-btn-secondary"
       >
-        Book a Free 20-min Review
+        Book a meeting slot (Calendly)
       </a>
 
-      <p class="mt-4 text-sm text-zinc-600">
-        Prefer email? Use the form on the right.
-      </p>
+      <a
+        href={`${LINKS.whatsappBase}?text=${encodeURIComponent("Hi DataPillars, I’d like to discuss reliable reporting and automation. Can we talk?")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="dp-btn-primary"
+      >
+        WhatsApp: +971 54 218 5806
+      </a>
     </div>
 
-    <div class="rounded-3xl border border-zinc-200 bg-white/70 p-6">
-      <h2 class="text-xl font-semibold">Send a message</h2>
+    <div class="mt-10 rounded-3xl border border-zinc-200 bg-white/80 p-6 shadow-sm">
+      <h2 class="text-xl font-semibold tracking-tight">Message me on WhatsApp</h2>
+      <p class="mt-2 text-sm text-zinc-700">
+        Fill this in and click “Send on WhatsApp” — it will open WhatsApp with a ready message.
+      </p>
 
-      <form class="mt-4 space-y-3">
-        <input class="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2" placeholder="Name" />
-        <input class="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2" placeholder="Email" />
-        <textarea class="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2" rows="5" placeholder="What do you need help with?"></textarea>
-        <button type="button" class="rounded-xl bg-zinc-900 px-4 py-2 text-white shadow-sm hover:bg-zinc-800">
-          Send (placeholder)
-        </button>
+      <form id="waForm" class="mt-6 grid gap-4">
+        <div class="grid gap-2">
+          <label class="text-sm font-medium text-zinc-900" for="name">Your name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            class="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:border-zinc-900"
+            placeholder="e.g. Sarah"
+            required
+          />
+        </div>
+
+        <div class="grid gap-2">
+          <label class="text-sm font-medium text-zinc-900" for="company">Company</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            class="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:border-zinc-900"
+            placeholder="e.g. ACME Logistics"
+          />
+        </div>
+
+        <div class="grid gap-2 md:grid-cols-2">
+          <div class="grid gap-2">
+            <label class="text-sm font-medium text-zinc-900" for="area">Reporting area</label>
+            <select
+              id="area"
+              name="area"
+              class="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:border-zinc-900"
+            >
+              <option value="Finance">Finance</option>
+              <option value="Operations">Operations</option>
+              <option value="HR">HR</option>
+              <option value="Multiple">Multiple</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="grid gap-2">
+            <label class="text-sm font-medium text-zinc-900" for="urgency">Timeline</label>
+            <select
+              id="urgency"
+              name="urgency"
+              class="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:border-zinc-900"
+            >
+              <option value="This week">This week</option>
+              <option value="This month">This month</option>
+              <option value="Next 1–3 months">Next 1–3 months</option>
+              <option value="Just exploring">Just exploring</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid gap-2">
+          <label class="text-sm font-medium text-zinc-900" for="systems">Where is your data today?</label>
+          <input
+            id="systems"
+            name="systems"
+            type="text"
+            class="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:border-zinc-900"
+            placeholder="Excel / ERP / SQL / Google Sheets / Power BI / etc."
+          />
+        </div>
+
+        <div class="grid gap-2">
+          <label class="text-sm font-medium text-zinc-900" for="problem">What’s the problem?</label>
+          <textarea
+            id="problem"
+            name="problem"
+            rows="4"
+            class="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm outline-none focus:border-zinc-900"
+            placeholder="e.g. numbers don’t match, manual refresh, slow month-end reporting, KPI definitions unclear…"
+            required
+          ></textarea>
+        </div>
+
+        <div class="mt-2 flex flex-wrap gap-3">
+          <button
+            type="submit"
+            class="dp-btn-primary"
+          >
+            Send on WhatsApp
+          </button>
+
+          <a
+            href={LINKS.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="dp-btn-secondary"
+          >
+            Or book the 30-min call
+          </a>
+        </div>
+
+        <p class="text-xs text-zinc-600">
+          Clicking “Send on WhatsApp” opens WhatsApp with a prefilled message — no data is stored on the website.
+        </p>
       </form>
-
-      <p class="mt-3 text-xs text-zinc-500">
-        Later we can connect this form to Formspree or your own backend.
-      </p>
     </div>
-  </div>
+  </section>
+
+  <script is:inline>
+    const form = document.getElementById("waForm");
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const fd = new FormData(form);
+      const name = (fd.get("name") || "").toString().trim();
+      const company = (fd.get("company") || "").toString().trim();
+      const area = (fd.get("area") || "").toString().trim();
+      const urgency = (fd.get("urgency") || "").toString().trim();
+      const systems = (fd.get("systems") || "").toString().trim();
+      const problem = (fd.get("problem") || "").toString().trim();
+
+      const lines = [
+        "Hi DataPillars,",
+        "",
+        `Name: ${name}`,
+        company ? `Company: ${company}` : null,
+        `Area: ${area}`,
+        `Timeline: ${urgency}`,
+        systems ? `Current data/tools: ${systems}` : null,
+        "",
+        "Problem:",
+        problem,
+      ].filter(Boolean);
+
+      const message = lines.join("\n");
+      const url = `https://wa.me/971542185806?text=${encodeURIComponent(message)}`;
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+  </script>
 </BaseLayout>
